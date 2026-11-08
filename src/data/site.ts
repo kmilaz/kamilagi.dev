@@ -143,7 +143,6 @@ export const site = {
   contact: {
     heading: "Let's talk.",
     body: "I'm an informatics engineering student in Malang building full-stack web apps with React, Astro, Hono and Cloudflare. If you want to talk about a project or the work behind any of these, my inbox is open.",
-    replyTime: "I reply within two days.",
     footerNote: "Designed and built by Kamila Zahwa. Astro, hand-written CSS, no template.",
   },
 } as const;

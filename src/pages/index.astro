@@ -260,7 +260,6 @@ const [lead, ...rest] = projects;
         <p class="contact__copy">{site.contact.body}</p>
         <a class="contact__email" href={`mailto:${site.email}`}>{site.email}</a>
         <CvButton tone="lime" />
-        <p class="contact__reply">{site.contact.replyTime}</p>
       </div>
 
       <dl class="contact__meta">
@@ -926,11 +925,6 @@ const [lead, ...rest] = projects;
   .contact__email:hover {
     color: var(--c-paper);
     border-bottom-color: var(--c-paper);
-  }
-
-  .contact__reply {
-    font-size: var(--text-sm);
-    color: var(--c-paper);
   }
 
   .contact__meta {
