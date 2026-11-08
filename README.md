@@ -43,7 +43,7 @@ Set the public URL when you deploy. `SITE_URL` is used for canonical links, the 
 Open Graph URLs:
 
 ```bash
-SITE_URL=https://your-domain.example npm run build
+SITE_URL=https://kamilagi.dev npm run build
 ```
 
 `astro.config.mjs` falls back to `https://kamilagi.dev`, so the sitemap is valid even before
@@ -58,13 +58,12 @@ filename in `site.cv`:
 cv: {
   label: "Download CV",
   href: "/cv.pdf",
-  fileName: "Marcella-Aurelia-CV.pdf",
+  fileName: "Kamila-Zahwa-CV.pdf",
 },
 ```
 
-Replace `public/cv.pdf` with the real PDF. Keep the filename, or update both `href` and
-`fileName` in `site.ts`. The committed PDF is a one-page placeholder marked "Replace me"; it is not
-a real CV.
+`public/cv.pdf` is the current CV export. Replace it with a newer PDF and keep the filename, or
+update both `href` and `fileName` in `site.ts`.
 
 ## Projects
 

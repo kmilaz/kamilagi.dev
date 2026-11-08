@@ -27,7 +27,7 @@ export const site = {
   cv: {
     label: "Download CV",
     href: "/cv.pdf",
-    fileName: "Marcella-Aurelia-CV.pdf",
+    fileName: "Kamila-Zahwa-CV.pdf",
   },
   portrait: {
     src: portrait,
