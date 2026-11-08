@@ -2,9 +2,9 @@
 import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
 
-// PLACEHOLDER: set SITE_URL when you deploy (for example https://marcella.example).
-// It is used for canonical URLs, the sitemap, and absolute Open Graph image URLs.
-const site = process.env.SITE_URL ?? 'https://portfolio.example.com';
+// Set SITE_URL when deploying elsewhere. It is used for canonical URLs, the
+// sitemap, and absolute Open Graph image URLs.
+const site = process.env.SITE_URL ?? 'https://kamilagi.dev';
 
 export default defineConfig({
   site,

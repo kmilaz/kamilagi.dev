@@ -20,10 +20,10 @@ const [lead, ...rest] = projects;
 ---
 
 <BaseLayout
-  title="Design student, future business analyst"
+  title="Informatics engineering student & full-stack developer"
   description={site.description}
   ogImage={ogHome}
-  ogTitle={`${site.name} — design student, future business analyst`}
+  ogTitle={`${site.name} — full-stack developer`}
 >
   <section class="hero">
     <div class="hero__decor" aria-hidden="true">
@@ -53,7 +53,7 @@ const [lead, ...rest] = projects;
           <span class="hero__line hero__line--last">{site.lastName}</span>
         </h1>
         <span class="sticker hero__seal sticker--hide-below-tablet">
-          <Seal label="Open for BA internship" tone="lime" size="lg" rotate={-9} />
+          <Seal label="Open from Jan 2027" tone="lime" size="lg" rotate={-9} />
         </span>
       </div>
 
@@ -152,11 +152,10 @@ const [lead, ...rest] = projects;
     <div class="container">
       <header class="work__head">
         <p class="eyebrow">02 / Selected work</p>
-        <h2 class="work__title">Two briefs, <em>taken apart.</em></h2>
+        <h2 class="work__title">Three builds, <em>taken apart.</em></h2>
         <p class="work__intro">
-          Course projects, not client work. Each case is written the way I would brief it: who it
-          was for, what the research showed, which requirements survived, and what actually
-          happened.
+          Self-directed and project-based work, not client work. Each case covers what the thing
+          does, the stack behind it, and what I learned while building it.
         </p>
       </header>
 
@@ -171,10 +170,10 @@ const [lead, ...rest] = projects;
     <div class="container">
       <header class="skills__head">
         <p class="eyebrow">03 / Skills</p>
-        <h2 class="skills__title">Skills, sorted by <em>what I can claim.</em></h2>
+        <h2 class="skills__title">Skills, sorted by <em>what I build with.</em></h2>
         <p class="skills__intro">
-          Three tiers, no logos, no progress bars. The point is to be clear about what I can do on
-          day one and what I would need help with.
+          Three groups, no logos, no progress bars: the languages I write, the frameworks and tools
+          I reach for, and the data and platform layer underneath.
         </p>
       </header>
 
@@ -206,10 +205,11 @@ const [lead, ...rest] = projects;
   <section class="track section" id="track">
     <div class="container">
       <header class="track__head">
-        <p class="eyebrow">04 / Work &amp; study</p>
+        <p class="eyebrow">04 / Leadership &amp; study</p>
         <h2 class="track__title">Where I have been.</h2>
         <p class="track__intro">
-          None of these are analyst roles. Each one taught me something I would use in one.
+          Workshop Riset Informatika runs the miniclass program and the events around it. These are
+          the roles I have held there, alongside my degree.
         </p>
       </header>
 
@@ -277,6 +277,11 @@ const [lead, ...rest] = projects;
           <dd>
             <a href={site.linkedin.href} rel="me noopener noreferrer" target="_blank">
               LinkedIn<span class="visually-hidden"> (opens in a new tab)</span>
+              <span aria-hidden="true"> ↗</span>
+            </a>
+            <span aria-hidden="true"> · </span>
+            <a href={site.github.href} rel="me noopener noreferrer" target="_blank">
+              GitHub<span class="visually-hidden"> (opens in a new tab)</span>
               <span aria-hidden="true"> ↗</span>
             </a>
           </dd>

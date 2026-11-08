@@ -1,7 +1,7 @@
 {
-  "name": "portfolio-ba",
+  "name": "kamilagi-dev",
   "version": "1.0.0",
-  "description": "Poster-style portfolio for a design student applying to business analyst internships.",
+  "description": "Poster-style portfolio for Kamila Zahwa, informatics engineering student and full-stack developer.",
   "type": "module",
   "private": true,
   "scripts": {
