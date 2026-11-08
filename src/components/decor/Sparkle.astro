@@ -1,0 +1,31 @@
+---
+interface Props {
+  tone?: "blue" | "lime" | "coral" | "ink" | "paper";
+  rotate?: number;
+  class?: string;
+}
+
+const { tone = "blue", rotate = 0, class: className = "" } = Astro.props;
+---
+
+<svg
+  class:list={["sparkle", `tone-${tone}`, className]}
+  style={`--sparkle-rotate: ${rotate}deg`}
+  viewBox="0 0 200 200"
+  aria-hidden="true"
+  focusable="false"
+>
+  <path
+    fill="currentColor"
+    d="M100 4c4 55 41 92 96 96-55 4-92 41-96 96-4-55-41-92-96-96 55-4 92-41 96-96Z"
+  />
+</svg>
+
+<style>
+  .sparkle {
+    display: block;
+    width: 100%;
+    height: auto;
+    transform: rotate(var(--sparkle-rotate, 0deg));
+  }
+</style>

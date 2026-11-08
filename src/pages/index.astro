@@ -1,0 +1,1107 @@
+---
+import { getCollection } from "astro:content";
+import { Image } from "astro:assets";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import ProjectCard from "../components/ProjectCard.astro";
+import Seal from "../components/decor/Seal.astro";
+import Sparkle from "../components/decor/Sparkle.astro";
+import Asterisk from "../components/decor/Asterisk.astro";
+import Squiggle from "../components/decor/Squiggle.astro";
+import ArrowDoodle from "../components/decor/ArrowDoodle.astro";
+import { site } from "../data/site";
+import ogHome from "../assets/og/og-home.png";
+
+const projects = (await getCollection("projects", ({ data }) => !data.draft)).sort(
+  (a, b) => a.data.order - b.data.order,
+);
+
+const [lead, ...rest] = projects;
+---
+
+<BaseLayout
+  title="Design student, future business analyst"
+  description={site.description}
+  ogImage={ogHome}
+  ogTitle={`${site.name} — design student, future business analyst`}
+>
+  <section class="hero">
+    <div class="hero__decor" aria-hidden="true">
+      <span class="sticker sticker--hero-asterisk sticker--hide-below-tablet">
+        <Asterisk tone="blue" rotate={14} />
+      </span>
+      <span class="sticker sticker--hero-sparkle sticker--hide-below-tablet">
+        <Sparkle tone="coral" rotate={-8} />
+      </span>
+      <span class="sticker sticker--hero-sparkle-two sticker--hide-below-tablet">
+        <Sparkle tone="lime" />
+      </span>
+      <span class="sticker sticker--hero-arrow sticker--hide-below-tablet">
+        <ArrowDoodle tone="coral" />
+      </span>
+    </div>
+
+    <div class="container hero__inner">
+      <div class="hero__top">
+        <p class="eyebrow">{site.hero.eyebrow}</p>
+        <p class="eyebrow hero__place">{site.location}</p>
+      </div>
+
+      <div class="hero__name-wrap">
+        <h1 class="hero__name">
+          <span class="hero__line">{site.firstName}</span>
+          <span class="hero__line hero__line--last">{site.lastName}</span>
+        </h1>
+        <span class="sticker hero__seal sticker--hide-below-tablet">
+          <Seal label="Open for BA internship" tone="lime" size="lg" rotate={-9} />
+        </span>
+      </div>
+
+      <div class="hero__lower">
+        <div class="hero__intro">
+          <p class="hero__lede">{site.hero.lede}</p>
+          <p class="hero__support">{site.hero.supporting}</p>
+
+          <div class="hero__actions">
+            <a class="button button--primary" href="#work">
+              See the work <span aria-hidden="true">↓</span>
+            </a>
+            <a class="button" href={`mailto:${site.email}`}>Email me</a>
+          </div>
+
+          <div class="hero__status">
+            <p class="tag"><span class="hero__dot" aria-hidden="true"></span>{site.availability.status}</p>
+            <dl class="hero__availability">
+              <div>
+                <dt>Available</dt>
+                <dd>{site.availability.window}</dd>
+              </div>
+              <div>
+                <dt>Where</dt>
+                <dd>{site.availability.arrangement}</dd>
+              </div>
+              <div>
+                <dt>Capacity</dt>
+                <dd>{site.availability.capacity}</dd>
+              </div>
+            </dl>
+          </div>
+        </div>
+
+        <figure class="hero__portrait">
+          <div class="hero__photo">
+            <Image
+              src={site.portrait.src}
+              alt={site.portrait.alt}
+              widths={[360, 540, 720]}
+              sizes="(min-width: 64rem) 26rem, (min-width: 48rem) 40vw, 82vw"
+            />
+            <figcaption class="hero__caption">
+              <span class="hero__caption-name">{site.name}</span>
+              <span class="hero__caption-note">Photo placeholder</span>
+            </figcaption>
+          </div>
+          <span class="hero__tape" aria-hidden="true"></span>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="about section" id="about">
+    <div class="container">
+      <div class="about__head">
+        <p class="eyebrow">01 / Hello</p>
+        <h2 class="about__title">Hello<span aria-hidden="true">!</span></h2>
+        <div class="about__squiggle" aria-hidden="true"><Squiggle tone="coral" /></div>
+      </div>
+
+      <div class="about__grid">
+        <div class="about__copy">
+          {site.about.paragraphs.slice(0, 2).map((paragraph) => <p>{paragraph}</p>)}
+        </div>
+
+        <aside class="about__facts" aria-labelledby="facts-title">
+          <h3 class="about__facts-title" id="facts-title">At a glance</h3>
+          <dl class="about__facts-list">
+            {
+              site.about.facts.map((fact) => (
+                <div class="about__fact">
+                  <dt>{fact.label}</dt>
+                  <dd>{fact.value}</dd>
+                </div>
+              ))
+            }
+          </dl>
+          <span class="sticker about__facts-star sticker--hide-below-tablet" aria-hidden="true">
+            <Sparkle tone="blue" rotate={18} />
+          </span>
+        </aside>
+      </div>
+
+      <div class="about__honest">
+        <p class="eyebrow eyebrow--accent">{site.about.honesty.title}</p>
+        <p class="about__honest-body">{site.about.honesty.body}</p>
+      </div>
+
+      <p class="about__quote">{site.about.quote}</p>
+    </div>
+  </section>
+
+  <section class="work section" id="work">
+    <div class="container">
+      <header class="work__head">
+        <p class="eyebrow">02 / Selected work</p>
+        <h2 class="work__title">Two briefs, <em>taken apart.</em></h2>
+        <p class="work__intro">
+          Course projects, not client work. Each case is written the way I would brief it: who it
+          was for, what the research showed, which requirements survived, and what actually
+          happened.
+        </p>
+      </header>
+
+      <div class="work__list">
+        {lead && <ProjectCard project={lead} />}
+        {rest.map((project) => <ProjectCard project={project} />)}
+      </div>
+    </div>
+  </section>
+
+  <section class="skills section" id="skills">
+    <div class="container">
+      <header class="skills__head">
+        <p class="eyebrow">03 / Skills</p>
+        <h2 class="skills__title">Skills, sorted by <em>what I can claim.</em></h2>
+        <p class="skills__intro">
+          Three tiers, no logos, no progress bars. The point is to be clear about what I can do on
+          day one and what I would need help with.
+        </p>
+      </header>
+
+      <div class="skills__tiers">
+        {
+          site.skills.map((tier) => (
+            <article class={`tier tier--${tier.id}`}>
+              <div class="tier__head">
+                <span class="tier__number">{tier.tier}</span>
+                <h3 class="tier__title">{tier.title}</h3>
+              </div>
+              <p class="tier__note">{tier.note}</p>
+              <ul class="tier__items">
+                {tier.items.map((item) => (
+                  <li class="tier__item">{item}</li>
+                ))}
+              </ul>
+            </article>
+          ))
+        }
+      </div>
+
+      <p class="skills__note">
+        No tool logos here. If it is not listed, I have not used it enough to claim it.
+      </p>
+    </div>
+  </section>
+
+  <section class="track section" id="track">
+    <div class="container">
+      <header class="track__head">
+        <p class="eyebrow">04 / Work &amp; study</p>
+        <h2 class="track__title">Where I have been.</h2>
+        <p class="track__intro">
+          None of these are analyst roles. Each one taught me something I would use in one.
+        </p>
+      </header>
+
+      <div class="track__grid">
+        <div class="track__col">
+          <h3 class="track__col-title">Experience</h3>
+          <ol class="timeline">
+            {
+              site.experience.map((entry) => (
+                <li class="timeline__entry">
+                  <p class="timeline__period">{entry.period}</p>
+                  <h4 class="timeline__role">{entry.role}</h4>
+                  <p class="timeline__org">{entry.org}</p>
+                  <p class="timeline__note">{entry.note}</p>
+                </li>
+              ))
+            }
+          </ol>
+        </div>
+
+        <div class="track__col">
+          <h3 class="track__col-title">Education</h3>
+          <ol class="timeline">
+            {
+              site.education.map((entry) => (
+                <li class="timeline__entry">
+                  <p class="timeline__period">{entry.period}</p>
+                  <h4 class="timeline__role">{entry.title}</h4>
+                  <p class="timeline__org">{entry.org}</p>
+                  <p class="timeline__note">{entry.note}</p>
+                </li>
+              ))
+            }
+          </ol>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact on-inverse" id="contact">
+    <div class="container contact__inner">
+      <div class="contact__head">
+        <p class="eyebrow eyebrow--inverse">05 / Contact</p>
+        <h2 class="contact__title">Let's <em>talk.</em></h2>
+      </div>
+
+      <div class="contact__body">
+        <p class="contact__copy">{site.contact.body}</p>
+        <a class="contact__email" href={`mailto:${site.email}`}>{site.email}</a>
+        <p class="contact__reply">{site.contact.replyTime}</p>
+      </div>
+
+      <dl class="contact__meta">
+        <div>
+          <dt>Available</dt>
+          <dd>{site.availability.window}</dd>
+        </div>
+        <div>
+          <dt>Based in</dt>
+          <dd>{site.location}</dd>
+        </div>
+        <div>
+          <dt>Elsewhere</dt>
+          <dd>
+            <a href={site.linkedin.href} rel="me noopener noreferrer" target="_blank">
+              LinkedIn<span class="visually-hidden"> (opens in a new tab)</span>
+              <span aria-hidden="true"> ↗</span>
+            </a>
+          </dd>
+        </div>
+      </dl>
+
+      <span class="sticker contact__seal sticker--hide-below-tablet">
+        <Seal label="Say hello" tone="lime" size="lg" rotate={8} />
+      </span>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  /* Hero ------------------------------------------------------------------ */
+
+  .hero {
+    position: relative;
+    overflow: clip;
+    padding-block: var(--space-xl) var(--section-y);
+  }
+
+  .hero__inner {
+    position: relative;
+  }
+
+  .hero__top {
+    display: flex;
+    justify-content: space-between;
+    gap: var(--space-md);
+    padding-bottom: var(--space-lg);
+    border-bottom: var(--border-hair) solid var(--c-rule);
+  }
+
+  .hero__place {
+    text-align: right;
+  }
+
+  .hero__name-wrap {
+    position: relative;
+    padding-block: var(--space-xl) var(--space-md);
+  }
+
+  .hero__name {
+    font-size: var(--text-hero);
+    line-height: var(--leading-none);
+    letter-spacing: var(--tracking-hero);
+    font-variation-settings: "SOFT" 40, "WONK" 1, "opsz" 144;
+  }
+
+  .hero__line {
+    display: block;
+  }
+
+  .hero__line--last {
+    margin-left: clamp(var(--space-lg), 13vw, 11rem);
+    color: var(--c-blue);
+    font-style: italic;
+  }
+
+  .hero__seal {
+    top: var(--space-2xl);
+    right: var(--space-3xs);
+    width: var(--seal-hero-width);
+  }
+
+  .hero__lower {
+    display: grid;
+    grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+    gap: clamp(var(--space-lg), 5vw, var(--space-4xl));
+    align-items: start;
+    margin-top: var(--space-xl);
+  }
+
+  .hero__intro {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-md);
+    padding-top: var(--space-xl);
+  }
+
+  .hero__lede {
+    max-width: var(--measure-wide);
+    font-family: var(--font-display);
+    font-size: var(--text-xl);
+    font-weight: var(--weight-medium);
+    line-height: var(--leading-snug);
+    letter-spacing: var(--tracking-snug);
+  }
+
+  .hero__support {
+    max-width: var(--measure);
+    color: var(--c-ink-muted);
+    font-size: var(--text-base);
+    line-height: var(--leading-relaxed);
+  }
+
+  .hero__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-xs);
+    padding-top: var(--space-2xs);
+  }
+
+  .hero__status {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+    width: 100%;
+    margin-top: var(--space-md);
+    padding-top: var(--space-md);
+    border-top: var(--border-hair) solid var(--c-rule);
+  }
+
+  .hero__status .tag {
+    align-self: flex-start;
+  }
+
+  .hero__dot {
+    width: var(--space-2xs);
+    height: var(--space-2xs);
+    margin-right: var(--space-3xs);
+    border-radius: var(--radius-pill);
+    background-color: var(--c-ink);
+  }
+
+  .hero__availability {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--space-sm);
+    margin: 0;
+  }
+
+  .hero__availability dt {
+    margin-bottom: var(--space-3xs);
+    color: var(--c-ink-muted);
+    font-size: var(--text-2xs);
+    font-weight: var(--weight-semibold);
+    letter-spacing: var(--tracking-wide);
+    text-transform: uppercase;
+  }
+
+  .hero__availability dd {
+    margin: 0;
+    font-size: var(--text-sm);
+    line-height: var(--leading-normal);
+  }
+
+  .hero__portrait {
+    position: relative;
+    justify-self: end;
+    width: min(100%, var(--portrait-width));
+    margin: 0;
+    margin-top: calc(-1 * var(--space-2xl));
+  }
+
+  .hero__photo {
+    padding: var(--space-sm) var(--space-sm) var(--space-xs);
+    border: var(--border-hair) solid var(--c-ink);
+    border-radius: var(--radius-md);
+    background-color: var(--c-paper);
+    box-shadow: var(--shadow-photo);
+    transform: rotate(1.5deg);
+  }
+
+  .hero__photo :global(img) {
+    width: 100%;
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+    border-radius: var(--radius-sm);
+  }
+
+  .hero__caption {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: var(--space-xs);
+    padding: var(--space-sm) var(--space-3xs) var(--space-3xs);
+  }
+
+  .hero__caption-name {
+    font-family: var(--font-display);
+    font-size: var(--text-md);
+    font-weight: var(--weight-semibold);
+    line-height: var(--leading-snug);
+  }
+
+  .hero__caption-note {
+    color: var(--c-ink-muted);
+    font-size: var(--text-3xs);
+    letter-spacing: var(--tracking-wide);
+    text-transform: uppercase;
+  }
+
+  .hero__tape {
+    position: absolute;
+    top: calc(-1 * var(--space-sm));
+    left: 50%;
+    width: var(--tape-width);
+    height: var(--space-lg);
+    background-color: color-mix(in srgb, var(--c-lime-soft) 82%, transparent);
+    border-inline: var(--border-hair) solid color-mix(in srgb, var(--c-ink) 10%, transparent);
+    transform: translateX(-50%) rotate(-3deg);
+    box-shadow: var(--shadow-sticker);
+  }
+
+  /* Hero decoration ------------------------------------------------------- */
+
+  .hero__decor .sticker {
+    color: var(--c-ink);
+  }
+
+  .sticker--hero-asterisk {
+    top: 12%;
+    left: var(--space-sm);
+    width: var(--space-xl);
+  }
+
+  .sticker--hero-sparkle {
+    top: 19%;
+    right: 8%;
+    width: var(--space-lg);
+  }
+
+  .sticker--hero-sparkle-two {
+    top: 6%;
+    right: 2%;
+    width: var(--space-md);
+  }
+
+  .sticker--hero-arrow {
+    right: 36%;
+    bottom: 31%;
+    width: clamp(6rem, 9vw, 9rem);
+  }
+
+  /* About ----------------------------------------------------------------- */
+
+  .about {
+    border-top: var(--border-hair) solid var(--c-rule);
+  }
+
+  .about__head {
+    position: relative;
+    padding-bottom: var(--space-xl);
+  }
+
+  .about__title {
+    margin-top: var(--space-xs);
+    color: var(--c-blue);
+    font-size: var(--text-display);
+    font-style: italic;
+    line-height: var(--leading-none);
+  }
+
+  .about__squiggle {
+    width: clamp(6rem, 12vw, 10rem);
+    margin-top: var(--space-xs);
+  }
+
+  .about__grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.25fr) minmax(0, 0.75fr);
+    gap: clamp(var(--space-lg), 6vw, var(--space-4xl));
+    align-items: start;
+  }
+
+  .about__copy {
+    display: grid;
+    gap: var(--space-md);
+    max-width: var(--measure);
+    font-size: var(--text-lg);
+    line-height: var(--leading-normal);
+    letter-spacing: var(--tracking-snug);
+  }
+
+  .about__facts {
+    position: relative;
+    padding: var(--space-lg);
+    border: var(--border-hair) solid var(--c-ink);
+    border-radius: var(--radius-md);
+    background-color: var(--c-paper);
+    box-shadow: var(--shadow-card);
+    transform: rotate(0.6deg);
+  }
+
+  .about__facts-title {
+    padding-bottom: var(--space-sm);
+    border-bottom: var(--border-hair) solid var(--c-rule);
+    font-size: var(--text-md);
+    letter-spacing: var(--tracking-snug);
+  }
+
+  .about__facts-list {
+    display: grid;
+    gap: var(--space-sm);
+    margin: var(--space-md) 0 0;
+  }
+
+  .about__fact dt {
+    color: var(--c-ink-muted);
+    font-size: var(--text-3xs);
+    font-weight: var(--weight-semibold);
+    letter-spacing: var(--tracking-wide);
+    text-transform: uppercase;
+  }
+
+  .about__fact dd {
+    margin: 0;
+    font-size: var(--text-sm);
+    line-height: var(--leading-normal);
+  }
+
+  .about__facts-star {
+    top: calc(-1 * var(--space-md));
+    right: calc(-1 * var(--space-md));
+    width: var(--space-xl);
+  }
+
+  .about__honest {
+    display: grid;
+    grid-template-columns: minmax(0, 0.4fr) minmax(0, 1fr);
+    gap: var(--space-lg);
+    margin-top: var(--space-2xl);
+    padding: var(--space-lg);
+    border: var(--border-hair) solid var(--c-ink);
+    border-left: var(--space-2xs) solid var(--c-coral);
+    border-radius: var(--radius-sm);
+    background-color: var(--c-paper);
+  }
+
+  .about__honest-body {
+    max-width: var(--measure-wide);
+    font-size: var(--text-base);
+    line-height: var(--leading-relaxed);
+  }
+
+  .about__quote {
+    max-width: var(--measure-wide);
+    margin-top: var(--space-2xl);
+    font-family: var(--font-display);
+    font-size: var(--text-quote);
+    font-style: italic;
+    line-height: var(--leading-tight);
+    letter-spacing: var(--tracking-tight);
+    color: var(--c-blue);
+  }
+
+  .about__quote::before {
+    content: "“";
+  }
+
+  .about__quote::after {
+    content: "”";
+  }
+
+  /* Work ------------------------------------------------------------------ */
+
+  .work {
+    border-top: var(--border-hair) solid var(--c-rule);
+  }
+
+  .work__head {
+    display: grid;
+    gap: var(--space-sm);
+    max-width: var(--measure-wide);
+    margin-bottom: var(--space-2xl);
+  }
+
+  .work__title em,
+  .skills__title em {
+    font-style: italic;
+    color: var(--c-blue);
+  }
+
+  .work__intro,
+  .skills__intro,
+  .track__intro {
+    color: var(--c-ink-muted);
+    font-size: var(--text-base);
+  }
+
+  .work__list {
+    display: grid;
+    gap: var(--space-2xl);
+  }
+
+  /* Skills ---------------------------------------------------------------- */
+
+  .skills {
+    border-top: var(--border-hair) solid var(--c-rule);
+  }
+
+  .skills__head {
+    display: grid;
+    gap: var(--space-sm);
+    max-width: var(--measure-wide);
+    margin-bottom: var(--space-2xl);
+  }
+
+  .skills__tiers {
+    display: grid;
+    gap: var(--space-sm);
+  }
+
+  .tier {
+    display: grid;
+    grid-template-columns: minmax(0, 0.5fr) minmax(0, 1fr);
+    grid-template-areas:
+      "head items"
+      "note items";
+    gap: var(--space-sm) var(--space-xl);
+    align-items: start;
+    padding: var(--space-lg) var(--space-xl);
+    border-radius: var(--radius-lg);
+    background-color: var(--c-paper);
+  }
+
+  .tier__head {
+    grid-area: head;
+    display: grid;
+    gap: var(--space-3xs);
+    align-content: start;
+  }
+
+  .tier__number {
+    font-family: var(--font-body);
+    font-size: var(--text-2xs);
+    font-weight: var(--weight-semibold);
+    letter-spacing: var(--tracking-wide);
+  }
+
+  .tier__title {
+    font-size: var(--text-2xl);
+    letter-spacing: var(--tracking-tight);
+  }
+
+  .tier__note {
+    grid-area: note;
+    max-width: var(--measure-narrow);
+    font-size: var(--text-sm);
+    line-height: var(--leading-normal);
+  }
+
+  .tier__items {
+    grid-area: items;
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2xs);
+    align-self: center;
+  }
+
+  .tier__item {
+    padding: var(--space-2xs) var(--space-md);
+    border: var(--border) solid currentColor;
+    border-radius: var(--radius-pill);
+    font-size: var(--text-sm);
+    font-weight: var(--weight-medium);
+    line-height: var(--leading-snug);
+  }
+
+  .tier--comfortable {
+    background-color: var(--c-lime);
+    border: var(--border-hair) solid var(--c-ink);
+  }
+
+  .tier--comfortable .tier__note {
+    color: var(--c-ink-muted);
+  }
+
+  .tier--learning {
+    border: var(--border-hair) solid var(--c-ink);
+    border-left: var(--space-2xs) solid var(--c-coral);
+  }
+
+  .tier--learning .tier__note {
+    color: var(--c-ink-muted);
+  }
+
+  .tier--interested {
+    background-color: var(--c-blue);
+    color: var(--c-paper);
+  }
+
+  .tier--interested .tier__note {
+    color: var(--c-paper);
+  }
+
+  .tier--interested .tier__number {
+    color: var(--c-lime);
+  }
+
+  .tier--interested .tier__item {
+    color: var(--c-lime);
+  }
+
+  .skills__note {
+    margin-top: var(--space-lg);
+    color: var(--c-ink-muted);
+    font-size: var(--text-sm);
+    font-style: italic;
+  }
+
+  /* Track record ---------------------------------------------------------- */
+
+  .track {
+    border-top: var(--border-hair) solid var(--c-rule);
+  }
+
+  .track__head {
+    display: grid;
+    gap: var(--space-sm);
+    max-width: var(--measure-wide);
+    margin-bottom: var(--space-2xl);
+  }
+
+  .track__grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: clamp(var(--space-lg), 6vw, var(--space-4xl));
+    align-items: start;
+  }
+
+  .track__col-title {
+    padding-bottom: var(--space-sm);
+    border-bottom: var(--border) solid var(--c-ink);
+    font-size: var(--text-lg);
+    letter-spacing: var(--tracking-snug);
+  }
+
+  .timeline {
+    display: grid;
+    gap: var(--space-xl);
+    margin-top: var(--space-lg);
+  }
+
+  .timeline__entry {
+    position: relative;
+    padding-left: var(--space-lg);
+    border-left: var(--border-hair) solid var(--c-rule);
+  }
+
+  .timeline__entry::before {
+    content: "";
+    position: absolute;
+    top: 0.5em;
+    left: calc(-1 * (var(--space-3xs) + (var(--border-hair) / 2)));
+    width: var(--space-2xs);
+    height: var(--space-2xs);
+    border-radius: var(--radius-pill);
+    background-color: var(--c-coral);
+  }
+
+  .timeline__period {
+    color: var(--c-ink-muted);
+    font-size: var(--text-2xs);
+    font-weight: var(--weight-semibold);
+    letter-spacing: var(--tracking-wide);
+    text-transform: uppercase;
+  }
+
+  .timeline__role {
+    margin-top: var(--space-3xs);
+    font-size: var(--text-lg);
+    line-height: var(--leading-snug);
+    letter-spacing: var(--tracking-snug);
+  }
+
+  .timeline__org {
+    margin-top: var(--space-3xs);
+    color: var(--c-blue);
+    font-size: var(--text-sm);
+    font-weight: var(--weight-medium);
+  }
+
+  .timeline__note {
+    max-width: var(--measure);
+    margin-top: var(--space-2xs);
+    color: var(--c-ink-muted);
+    font-size: var(--text-sm);
+    line-height: var(--leading-normal);
+  }
+
+  /* Contact --------------------------------------------------------------- */
+
+  .contact {
+    position: relative;
+    overflow: clip;
+    padding-block: var(--section-y);
+    background-color: var(--c-blue);
+    color: var(--c-paper);
+  }
+
+  .contact__inner {
+    position: relative;
+  }
+
+  .contact__head {
+    display: grid;
+    gap: var(--space-xs);
+  }
+
+  .contact__title {
+    color: var(--c-paper);
+    font-size: var(--text-hero);
+    font-style: italic;
+    line-height: var(--leading-none);
+    letter-spacing: var(--tracking-hero);
+  }
+
+  .contact__title em {
+    color: var(--c-lime);
+  }
+
+  .contact__body {
+    display: grid;
+    gap: var(--space-md);
+    justify-items: start;
+    max-width: var(--measure-wide);
+    margin-top: var(--space-2xl);
+  }
+
+  .contact__copy {
+    font-size: var(--text-lg);
+    line-height: var(--leading-normal);
+  }
+
+  .contact__email {
+    padding-bottom: var(--space-2xs);
+    border-bottom: var(--border-thick) solid var(--c-lime);
+    color: var(--c-lime);
+    font-family: var(--font-display);
+    font-size: var(--text-2xl);
+    font-weight: var(--weight-medium);
+    line-height: var(--leading-snug);
+    letter-spacing: var(--tracking-snug);
+    text-decoration: none;
+    overflow-wrap: anywhere;
+  }
+
+  .contact__email:hover {
+    color: var(--c-paper);
+    border-bottom-color: var(--c-paper);
+  }
+
+  .contact__reply {
+    font-size: var(--text-sm);
+    color: var(--c-paper);
+  }
+
+  .contact__meta {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--space-lg);
+    margin: var(--space-2xl) 0 0;
+    padding-top: var(--space-md);
+    border-top: var(--border-hair) solid color-mix(in srgb, var(--c-paper) 35%, transparent);
+  }
+
+  .contact__meta dt {
+    color: var(--c-lime);
+    font-size: var(--text-3xs);
+    font-weight: var(--weight-semibold);
+    letter-spacing: var(--tracking-wide);
+    text-transform: uppercase;
+  }
+
+  .contact__meta dd {
+    margin: var(--space-3xs) 0 0;
+    font-size: var(--text-sm);
+    line-height: var(--leading-normal);
+  }
+
+  .contact__meta a {
+    color: var(--c-paper);
+  }
+
+  .contact__meta a:hover {
+    color: var(--c-lime);
+  }
+
+  .contact__seal {
+    top: var(--space-sm);
+    right: 4%;
+    width: var(--seal-contact-width);
+  }
+
+  /* Motion ---------------------------------------------------------------- */
+
+  @media (prefers-reduced-motion: no-preference) {
+    .hero__line {
+      animation: rise var(--dur-slow) var(--ease-out) both;
+    }
+
+    .hero__line--last {
+      animation-delay: 90ms;
+    }
+
+  }
+
+  @keyframes rise {
+    from {
+      transform: translateY(0.12em);
+    }
+  }
+
+  /* Responsive ------------------------------------------------------------ */
+
+  @media (max-width: 64rem) {
+    .hero__lower {
+      grid-template-columns: minmax(0, 1fr) minmax(0, 0.9fr);
+    }
+
+    .hero__seal {
+      right: 0;
+    }
+
+    .tier {
+      grid-template-columns: minmax(0, 0.5fr) minmax(0, 1fr);
+    }
+  }
+
+  @media (max-width: 48rem) {
+    .hero {
+      padding-top: var(--space-lg);
+    }
+
+    .hero__name-wrap {
+      padding-block: var(--space-lg) var(--space-sm);
+    }
+
+    .hero__line--last {
+      margin-left: 8%;
+    }
+
+    .hero__lower {
+      grid-template-columns: 1fr;
+      gap: var(--space-xl);
+      margin-top: var(--space-lg);
+    }
+
+    .hero__intro {
+      padding-top: var(--space-sm);
+      gap: var(--space-md);
+    }
+
+    .hero__portrait {
+      justify-self: stretch;
+      width: min(100%, 24rem);
+      margin-top: 0;
+      margin-inline: auto;
+    }
+
+    .about__grid,
+    .about__honest,
+    .track__grid {
+      grid-template-columns: 1fr;
+    }
+
+    .about__facts {
+      transform: none;
+    }
+
+    .tier {
+      grid-template-columns: 1fr;
+      grid-template-areas:
+        "head"
+        "note"
+        "items";
+      gap: var(--space-sm);
+      padding: var(--space-lg);
+    }
+
+    .tier__items {
+      margin-top: var(--space-2xs);
+    }
+
+    .contact__meta {
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-md);
+    }
+  }
+
+  @media (max-width: 36rem) {
+    .hero__caption {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: var(--space-3xs);
+    }
+
+    .hero__top {
+      align-items: flex-start;
+      flex-direction: column;
+      gap: var(--space-xs);
+    }
+
+    .hero__place {
+      text-align: left;
+    }
+
+    .hero__availability {
+      grid-template-columns: 1fr;
+      gap: var(--space-sm);
+    }
+
+    .hero__availability div {
+      display: grid;
+      grid-template-columns: 6rem 1fr;
+      gap: var(--space-sm);
+      align-items: baseline;
+    }
+
+    .hero__actions {
+      width: 100%;
+    }
+
+    .hero__actions .button {
+      justify-content: center;
+      flex: 1;
+    }
+
+    .contact__meta {
+      grid-template-columns: 1fr;
+    }
+
+    .contact__title {
+      font-size: var(--text-contact);
+    }
+  }
+</style>

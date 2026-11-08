@@ -1,0 +1,33 @@
+---
+interface Props {
+  tone?: "blue" | "lime" | "coral" | "ink" | "paper";
+  class?: string;
+}
+
+const { tone = "coral", class: className = "" } = Astro.props;
+---
+
+<svg
+  class:list={["arrow", `tone-${tone}`, className]}
+  viewBox="0 0 150 96"
+  fill="none"
+  aria-hidden="true"
+  focusable="false"
+>
+  <path
+    d="M6 10c9 34 38 57 74 60 22 2 42-5 58-20"
+    stroke="currentColor"
+    stroke-width="3"
+    stroke-linecap="round"
+  />
+  <path d="M139 26l5 30-29-8" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+</svg>
+
+<style>
+  .arrow {
+    display: block;
+    width: 100%;
+    height: auto;
+    overflow: visible;
+  }
+</style>

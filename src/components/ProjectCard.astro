@@ -1,0 +1,157 @@
+---
+import { Image } from "astro:assets";
+import type { CollectionEntry } from "astro:content";
+
+interface Props {
+  project: CollectionEntry<"projects">;
+}
+
+const { project } = Astro.props;
+const { data } = project;
+const titleId = `project-${project.id}-title`;
+---
+
+<article class="project-card">
+  <a class="project-card__link" href={`/work/${project.id}/`} aria-labelledby={titleId}>
+    <div class="project-card__media">
+      <Image
+        src={data.cover}
+        alt={data.coverAlt}
+        widths={[560, 800, 1120]}
+        sizes="(min-width: 64rem) 42rem, 100vw"
+        loading="lazy"
+        decoding="async"
+      />
+    </div>
+    <div class="project-card__body">
+      <p class="eyebrow">{data.context} · {data.year}</p>
+      <h3 class="project-card__title" id={titleId}>{data.title}</h3>
+      <p class="project-card__summary">{data.summary}</p>
+      <p class="project-card__outcome"><span>Outcome</span>{data.outcome}</p>
+      <span class="project-card__cta">
+        Read the case
+        <svg class="project-card__arrow" viewBox="0 0 16 16" fill="none" aria-hidden="true" focusable="false">
+          <path d="M2 8h11M8.5 3.5 13 8l-4.5 4.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+      </span>
+    </div>
+  </a>
+</article>
+
+<style>
+  .project-card {
+    border-top: var(--border-hair) solid var(--c-rule);
+    padding-top: var(--space-lg);
+  }
+
+  .project-card__link {
+    display: grid;
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+    gap: var(--column-gap);
+    align-items: center;
+    text-decoration: none;
+  }
+
+  .project-card:nth-child(even) .project-card__media {
+    order: 2;
+  }
+
+  .project-card__media {
+    position: relative;
+    overflow: hidden;
+    border: var(--border-hair) solid var(--c-ink);
+    border-radius: var(--radius-md);
+    background-color: var(--c-paper);
+    box-shadow: var(--shadow-card);
+  }
+
+  .project-card__media :global(img) {
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    object-fit: cover;
+    transition: transform var(--dur-slow) var(--ease-out);
+  }
+
+  .project-card__link:hover .project-card__media :global(img) {
+    transform: scale(1.025);
+  }
+
+  .project-card__body {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-sm);
+  }
+
+  .project-card__title {
+    font-size: var(--text-display-sm);
+    letter-spacing: var(--tracking-tight);
+  }
+
+  .project-card__summary {
+    max-width: var(--measure);
+    font-size: var(--text-base);
+    color: var(--c-ink-muted);
+    line-height: var(--leading-normal);
+  }
+
+  .project-card__outcome {
+    max-width: var(--measure);
+    padding-top: var(--space-sm);
+    border-top: var(--border-hair) solid var(--c-rule);
+    font-size: var(--text-sm);
+    line-height: var(--leading-normal);
+  }
+
+  .project-card__outcome span {
+    display: block;
+    margin-bottom: var(--space-3xs);
+    color: var(--c-coral-deep);
+    font-size: var(--text-2xs);
+    font-weight: var(--weight-semibold);
+    letter-spacing: var(--tracking-wide);
+    text-transform: uppercase;
+  }
+
+  .project-card__cta {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2xs);
+    padding-bottom: var(--space-3xs);
+    border-bottom: var(--border) solid var(--c-blue);
+    color: var(--c-blue);
+    font-size: var(--text-sm);
+    font-weight: var(--weight-semibold);
+  }
+
+  .project-card__arrow {
+    width: 1em;
+    height: 1em;
+    transition: transform var(--dur-fast) var(--ease-out);
+  }
+
+  .project-card__link:hover .project-card__arrow {
+    transform: translateX(var(--space-2xs));
+  }
+
+  .project-card__link:focus-visible {
+    outline: var(--focus-width) solid var(--focus-color);
+    outline-offset: var(--focus-offset);
+    border-radius: var(--radius-sm);
+  }
+
+  @media (max-width: 56rem) {
+    .project-card__link {
+      grid-template-columns: 1fr;
+      gap: var(--space-md);
+    }
+
+    .project-card:nth-child(even) .project-card__media {
+      order: 0;
+    }
+
+    .project-card__media :global(img) {
+      aspect-ratio: 16 / 9;
+    }
+  }
+</style>

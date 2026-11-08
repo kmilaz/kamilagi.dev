@@ -1,0 +1,33 @@
+---
+interface Props {
+  tone?: "blue" | "lime" | "coral" | "ink" | "paper";
+  class?: string;
+}
+
+const { tone = "coral", class: className = "" } = Astro.props;
+---
+
+<svg
+  class:list={["squiggle", `tone-${tone}`, className]}
+  viewBox="0 0 220 28"
+  fill="none"
+  preserveAspectRatio="none"
+  aria-hidden="true"
+  focusable="false"
+>
+  <path
+    d="M3 19c16-13 32 8 48-2s32-11 48 0 32 10 48-1 32-3 48 3"
+    stroke="currentColor"
+    stroke-width="4"
+    stroke-linecap="round"
+  />
+</svg>
+
+<style>
+  .squiggle {
+    display: block;
+    width: 100%;
+    height: auto;
+    overflow: visible;
+  }
+</style>

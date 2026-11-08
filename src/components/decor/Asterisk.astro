@@ -1,0 +1,43 @@
+---
+interface Props {
+  tone?: "blue" | "lime" | "coral" | "ink" | "paper";
+  rotate?: number;
+  class?: string;
+}
+
+const { tone = "coral", rotate = 0, class: className = "" } = Astro.props;
+const spokes = [0, 45, 90, 135];
+---
+
+<svg
+  class:list={["asterisk", `tone-${tone}`, className]}
+  style={`--asterisk-rotate: ${rotate}deg`}
+  viewBox="0 0 100 100"
+  fill="none"
+  aria-hidden="true"
+  focusable="false"
+>
+  {
+    spokes.map((angle) => (
+      <line
+        x1="50"
+        y1="8"
+        x2="50"
+        y2="92"
+        stroke="currentColor"
+        stroke-width="9"
+        stroke-linecap="round"
+        transform={`rotate(${angle} 50 50)`}
+      />
+    ))
+  }
+</svg>
+
+<style>
+  .asterisk {
+    display: block;
+    width: 100%;
+    height: auto;
+    transform: rotate(var(--asterisk-rotate, 0deg));
+  }
+</style>

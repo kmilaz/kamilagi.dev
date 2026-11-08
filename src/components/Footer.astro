@@ -1,0 +1,93 @@
+---
+import { site } from "../data/site";
+const year = new Date().getFullYear();
+---
+
+<footer class="site-footer">
+  <div class="container site-footer__inner">
+    <div class="site-footer__id">
+      <p class="site-footer__name">{site.name}</p>
+      <p class="site-footer__note">{site.contact.footerNote}</p>
+    </div>
+    <nav class="site-footer__nav" aria-label="Footer">
+      <a href={`mailto:${site.email}`}>{site.email}</a>
+      <a href={site.linkedin.href} rel="me noopener noreferrer" target="_blank">
+        LinkedIn<span class="visually-hidden"> (opens in a new tab)</span>
+        <span aria-hidden="true">↗</span>
+      </a>
+      <a href="/#work">Work</a>
+    </nav>
+    <p class="site-footer__meta">© {year} · {site.location}</p>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    padding-block: var(--space-2xl);
+    border-top: var(--border-hair) solid var(--c-rule);
+    font-size: var(--text-sm);
+  }
+
+  .site-footer__inner {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr auto;
+    gap: var(--space-xl);
+    align-items: end;
+  }
+
+  .site-footer__name {
+    font-family: var(--font-display);
+    font-size: var(--text-lg);
+    font-weight: var(--weight-semibold);
+    line-height: var(--leading-snug);
+  }
+
+  .site-footer__note,
+  .site-footer__meta {
+    margin-top: var(--space-2xs);
+    color: var(--c-ink-muted);
+    font-size: var(--text-2xs);
+  }
+
+  .site-footer__nav {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2xs);
+    align-items: flex-start;
+  }
+
+  .site-footer__nav a {
+    text-decoration: none;
+    color: var(--c-ink);
+  }
+
+  .site-footer__nav a:hover {
+    color: var(--c-blue);
+    text-decoration: underline;
+  }
+
+  .site-footer__meta {
+    text-align: right;
+    white-space: nowrap;
+  }
+
+  @media (max-width: 48rem) {
+    .site-footer__inner {
+      grid-template-columns: 1fr 1fr;
+      align-items: start;
+    }
+
+    .site-footer__meta {
+      grid-column: 1 / -1;
+      margin-top: 0;
+      text-align: left;
+    }
+  }
+
+  @media (max-width: 36rem) {
+    .site-footer__inner {
+      grid-template-columns: 1fr;
+      gap: var(--space-lg);
+    }
+  }
+</style>

@@ -1,0 +1,87 @@
+---
+interface Props {
+  label: string;
+  tone?: "lime" | "coral" | "blue" | "paper";
+  size?: "sm" | "md" | "lg";
+  rotate?: number;
+  class?: string;
+}
+
+const { label, tone = "lime", size = "md", rotate = -8, class: className = "" } = Astro.props;
+---
+
+<div
+  class:list={["seal", `seal--${tone}`, `seal--${size}`, className]}
+  style={`--seal-rotate: ${rotate}deg`}
+  aria-hidden="true"
+>
+  <svg viewBox="0 0 200 200" focusable="false">
+    <path
+      class="seal__shape"
+      d="M100 2 110.4 20.7 125.4 5.3 130.6 26.1 149 15.1 148.7 36.5 169.3 30.7 163.5 51.3 184.9 51 173.9 69.4 194.7 74.6 179.3 89.6 198 100 179.3 110.4 194.7 125.4 173.9 130.6 184.9 149 163.5 148.7 169.3 169.3 148.7 163.5 149 184.9 130.6 173.9 125.4 194.7 110.4 179.3 100 198 89.6 179.3 74.6 194.7 69.4 173.9 51 184.9 51.3 163.5 30.7 169.3 36.5 148.7 15.1 149 26.1 130.6 5.3 125.4 20.7 110.4 2 100 20.7 89.6 5.3 74.6 26.1 69.4 15.1 51 36.5 51.3 30.7 30.7 51.3 36.5 51 15.1 69.4 26.1 74.6 5.3 89.6 20.7Z"
+    />
+  </svg>
+  <span class="seal__label">{label}</span>
+</div>
+
+<style>
+  .seal {
+    position: relative;
+    display: grid;
+    place-items: center;
+    aspect-ratio: 1;
+    transform: rotate(var(--seal-rotate, 0deg));
+    filter: drop-shadow(0 var(--space-2xs) var(--space-md) color-mix(in srgb, var(--c-ink) 18%, transparent));
+  }
+
+  .seal svg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .seal__shape {
+    fill: var(--c-lime);
+  }
+
+  .seal--coral .seal__shape {
+    fill: var(--c-coral);
+  }
+
+  .seal--blue .seal__shape {
+    fill: var(--c-blue);
+  }
+
+  .seal--paper .seal__shape {
+    fill: var(--c-paper);
+  }
+
+  .seal__label {
+    position: relative;
+    padding: 18%;
+    font-family: var(--font-display);
+    font-size: var(--text-sm);
+    font-variation-settings: "SOFT" 30, "WONK" 1;
+    font-weight: 800;
+    line-height: 0.98;
+    letter-spacing: -0.01em;
+    text-align: center;
+    text-transform: uppercase;
+    color: var(--c-ink);
+  }
+
+  .seal--blue .seal__label {
+    color: var(--c-paper);
+  }
+
+  .seal--sm .seal__label {
+    font-size: var(--text-3xs);
+    padding: 20%;
+  }
+
+  .seal--lg .seal__label {
+    font-size: var(--text-md);
+    padding: 16%;
+  }
+</style>
