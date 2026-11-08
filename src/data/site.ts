@@ -21,6 +21,11 @@ export const site = {
     label: "linkedin.com/in/your-handle",
     href: "https://www.linkedin.com/in/your-handle",
   },
+  cv: {
+    label: "Download CV",
+    href: "/cv.pdf",
+    fileName: "Marcella-Aurelia-CV.pdf",
+  },
   portrait: {
     src: portrait,
     alt: "Placeholder portrait of Marcella Aurelia, labelled as a photo to be replaced.",

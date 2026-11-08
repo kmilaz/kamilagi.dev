@@ -31,6 +31,7 @@ Every personal detail is in one file: [`src/data/site.ts`](src/data/site.ts).
 | Experience and education | `site.experience`, `site.education` |
 | Contact copy | `site.contact` |
 | Portrait | `src/assets/images/portrait-placeholder.png` (imported at the top of `site.ts`) |
+| CV download | `public/cv.pdf`; label and filename in `site.cv` |
 | Projects | `src/content/projects/*.md` |
 | Project covers | `src/assets/images/case-*.png` (1600 × 1000) |
 | Open Graph images | `src/assets/og/*.png` (1200 × 630) |
@@ -48,6 +49,23 @@ SITE_URL=https://your-domain.example npm run build
 
 `astro.config.mjs` falls back to `https://portfolio.example.com`, so the sitemap is valid even before
 you set a domain.
+
+## CV download
+
+The hero and contact sections share one download button. It points to `/cv.pdf` and uses the
+filename in `site.cv`:
+
+```ts
+cv: {
+  label: "Download CV",
+  href: "/cv.pdf",
+  fileName: "Marcella-Aurelia-CV.pdf",
+},
+```
+
+Replace `public/cv.pdf` with the real PDF. Keep the filename, or update both `href` and
+`fileName` in `site.ts`. The committed PDF is a one-page placeholder marked "Replace me"; it is not
+a real CV.
 
 ## Projects
 
