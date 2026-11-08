@@ -30,14 +30,14 @@ Every personal detail is in one file: [`src/data/site.ts`](src/data/site.ts).
 | Skills and the three groups | `site.skills` |
 | Experience and education | `site.experience`, `site.education` |
 | Contact copy | `site.contact` |
-| Portrait | `src/assets/images/portrait-placeholder.png` (imported at the top of `site.ts`) |
+| Portrait | `src/assets/images/portrait.jpg` (imported at the top of `site.ts`) |
 | CV download | `public/cv.pdf`; label and filename in `site.cv` |
 | Projects | `src/content/projects/*.md` |
 | Project covers | `src/assets/images/case-*.png` (1600 × 1000) |
 | Open Graph images | `src/assets/og/*.png` (1200 × 630) |
 
-The personal data comes from Kamila's CV. The portrait is still a temporary placeholder and is
-labelled as one on the page; swap the file when a real photo is available.
+The personal data comes from Kamila's CV. The portrait is Kamila's photo, imported at the top of
+`site.ts`.
 
 Set the public URL when you deploy. `SITE_URL` is used for canonical links, the sitemap and absolute
 Open Graph URLs:
@@ -118,8 +118,7 @@ file: `36rem` compact, `48rem` tablet, `56rem` case-study stack, `64rem` desktop
   blue contact section.
 - Stickers are `aria-hidden`, pointer-events none, and hidden at the tablet breakpoint or smaller.
 - All animation is optional and suppressed under `prefers-reduced-motion`.
-- Images carry descriptive alt text; the portrait is visibly labelled and its alt text says it is a
-  placeholder.
+- Images carry descriptive alt text.
 - The page has a skip link, landmarks, one `h1`, and a logical heading order.
 
 ## Images

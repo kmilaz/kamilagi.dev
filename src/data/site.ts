@@ -1,4 +1,4 @@
-import portrait from "../assets/images/portrait-placeholder.png";
+import portrait from "../assets/images/portrait.jpg";
 
 /**
  * PERSONAL DATA
@@ -31,7 +31,7 @@ export const site = {
   },
   portrait: {
     src: portrait,
-    alt: "Placeholder portrait of Kamila Zahwa.",
+    alt: "Kamila Zahwa wearing a grey hijab and black shirt, arms crossed.",
   },
   availability: {
     status: "Open",
