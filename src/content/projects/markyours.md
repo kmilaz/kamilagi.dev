@@ -19,7 +19,7 @@ tools:
   - "Cloudflare D1"
   - "Cloudflare R2"
 cover: "../../assets/images/case-markyours-cover.png"
-coverAlt: "Typographic cover for the MarkYours browser studio app case study."
+coverAlt: "Screenshot of the MarkYours landing page with its logo and Start Photobooth button."
 ogImage: "../../assets/og/og-markyours.png"
 outcome: "Live at markyours.kamilagi.dev, still in progress."
 draft: false

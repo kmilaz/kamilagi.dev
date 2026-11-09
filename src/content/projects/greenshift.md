@@ -22,7 +22,7 @@ tools:
   - "Cloudflare KV"
   - "Cloudflare R2"
 cover: "../../assets/images/case-greenshift-cover.png"
-coverAlt: "Typographic cover for the Greenshift green financing platform case study."
+coverAlt: "Screenshot of the Greenshift landing page showing the headline and the project dashboard."
 ogImage: "../../assets/og/og-greenshift.png"
 outcome: "Built July to September 2026."
 draft: false
