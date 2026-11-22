@@ -41,7 +41,7 @@ export const site = {
   hero: {
     lede: "Informatics engineering student and full-stack web developer. I build web applications end to end — React and Astro on the front end, Hono, Drizzle and Cloudflare behind.",
     supporting:
-      "My work ranges from a browser-based studio app and an MRV platform to a kos search platform and a laboratory portal. I keep the architecture simple so each build remains easy to maintain.",
+      "I care about simple, maintainable architecture.",
   },
   about: {
     paragraphs: [
