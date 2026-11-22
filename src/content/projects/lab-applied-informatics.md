@@ -25,19 +25,19 @@ draft: false
 
 The Applied Informatics Laboratory at Politeknik Negeri Malang needed one place to present its work and one place to maintain it. The result has two sides: a public portal with the lab profile, products, members, news, gallery and partners; and an admin panel for the people who keep that content current.
 
-The public side has to look credible to visitors. The admin side has to make routine updates possible without touching the database.
+The public side has to be credible to visitors. The admin side has to make routine updates possible without touching the database.
 
 ## My part
 
-I worked across the public site, the admin panel and the database. The clearest threads in my commits:
+I worked across the public site, the admin panel and the database. The main threads in my commits:
 
 - **Member pages:** a member directory, profile detail views, dynamic tab counts and related data for each person.
 - **Partners:** the Partner model, admin CRUD, create/edit pages and the public partner listing.
 - **Gallery:** filters, empty states, error logging and the public gallery view.
-- **Admin plumbing:** sidebar links, member CRUD, validation feedback and header/navigation updates.
+- **Admin structure:** sidebar links, member CRUD, validation feedback and header/navigation updates.
 - **Database:** an initial PostgreSQL dump and schema work for the shared data.
 
-That makes the role full-stack rather than a single slice. The public features and the admin features were built against the same records.
+The role therefore spans the full stack rather than a single layer. The public and admin features were built against the same records.
 
 ## How it fits together
 
@@ -48,8 +48,8 @@ The important architectural choice was to model the lab's content once and expos
 ## What I learned
 
 - Empty states are part of the feature. A gallery or partner list without data still needs to explain what to do next.
-- Filters and counts make a directory usable; without them, a member page becomes a wall of cards.
-- The database shape decides how easy the admin panel is. Getting the relationships right early saved work on every CRUD screen.
+- Filters and counts make a directory usable; without them, a member page becomes an undifferentiated list of cards.
+- The database structure determines how straightforward the admin panel is. Defining the relationships early reduced work on every CRUD screen.
 
 ## Status
 

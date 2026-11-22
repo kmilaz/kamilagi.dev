@@ -42,8 +42,8 @@ deliver it and the partners who can fund it.
 4. The verified project becomes a Green Project Blueprint.
 5. A licensed securities partner funds the blueprint.
 
-The product is the path between those steps: each actor needs a different view of the same project,
-and the project only becomes fundable after the verification stage.
+The product is the workflow that connects these steps: each actor needs a different view of the same
+project, and the project only becomes fundable after the verification stage.
 
 ## Stack
 

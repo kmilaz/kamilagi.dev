@@ -44,18 +44,13 @@ const projectCount = countLabels[projects.length] ?? String(projects.length);
     </div>
 
     <div class="container hero__inner">
-      <div class="hero__top">
-        <p class="eyebrow">{site.hero.eyebrow}</p>
-        <p class="eyebrow hero__place">{site.location}</p>
-      </div>
-
       <div class="hero__name-wrap">
         <h1 class="hero__name">
           <span class="hero__line">{site.firstName}</span>
           <span class="hero__line hero__line--last">{site.lastName}</span>
         </h1>
         <span class="sticker hero__seal sticker--hide-below-tablet">
-          <Seal label="Open from Jan 2027" tone="lime" size="lg" rotate={-9} />
+          <Seal label="Available Jan 2027" tone="lime" size="lg" rotate={-9} />
         </span>
       </div>
 
@@ -82,10 +77,6 @@ const projectCount = countLabels[projects.length] ?? String(projects.length);
               <div>
                 <dt>Where</dt>
                 <dd>{site.availability.arrangement}</dd>
-              </div>
-              <div>
-                <dt>Capacity</dt>
-                <dd>{site.availability.capacity}</dd>
               </div>
             </dl>
           </div>
@@ -154,7 +145,7 @@ const projectCount = countLabels[projects.length] ?? String(projects.length);
     <div class="container">
       <header class="work__head">
         <p class="eyebrow">02 / Selected work</p>
-        <h2 class="work__title">{projectCount} builds, <em>taken apart.</em></h2>
+        <h2 class="work__title">{projectCount} projects, <em>in detail.</em></h2>
         <p class="work__intro">
           A mix of client, lab and self-directed work. Each case covers what the thing does, the
           stack behind it, and what I learned while building it.
@@ -172,10 +163,10 @@ const projectCount = countLabels[projects.length] ?? String(projects.length);
     <div class="container">
       <header class="skills__head">
         <p class="eyebrow">03 / Skills</p>
-        <h2 class="skills__title">Skills, sorted by <em>what I build with.</em></h2>
+        <h2 class="skills__title">Skills, grouped by <em>how I use them.</em></h2>
         <p class="skills__intro">
-          Three groups, no logos, no progress bars: the languages I write, the frameworks and tools
-          I reach for, and the data and platform layer underneath.
+          Three groups, without logos or progress bars: the languages I write, the frameworks and tools
+          I use, and the data and platform layer underneath.
         </p>
       </header>
 
@@ -255,7 +246,7 @@ const projectCount = countLabels[projects.length] ?? String(projects.length);
     <div class="container contact__inner">
       <div class="contact__head">
         <p class="eyebrow eyebrow--inverse">05 / Contact</p>
-        <h2 class="contact__title">Let's <em>talk.</em></h2>
+        <h2 class="contact__title">Get in <em>touch.</em></h2>
       </div>
 
       <div class="contact__body">
@@ -307,18 +298,6 @@ const projectCount = countLabels[projects.length] ?? String(projects.length);
 
   .hero__inner {
     position: relative;
-  }
-
-  .hero__top {
-    display: flex;
-    justify-content: space-between;
-    gap: var(--space-md);
-    padding-bottom: var(--space-lg);
-    border-bottom: var(--border-hair) solid var(--c-rule);
-  }
-
-  .hero__place {
-    text-align: right;
   }
 
   .hero__name-wrap {
@@ -412,7 +391,7 @@ const projectCount = countLabels[projects.length] ?? String(projects.length);
 
   .hero__availability {
     display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: var(--space-sm);
     margin: 0;
   }
@@ -1067,16 +1046,6 @@ const projectCount = countLabels[projects.length] ?? String(projects.length);
       flex-direction: column;
       align-items: flex-start;
       gap: var(--space-3xs);
-    }
-
-    .hero__top {
-      align-items: flex-start;
-      flex-direction: column;
-      gap: var(--space-xs);
-    }
-
-    .hero__place {
-      text-align: left;
     }
 
     .hero__availability {

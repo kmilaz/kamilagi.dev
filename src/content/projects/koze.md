@@ -25,13 +25,13 @@ draft: false
 
 ## What it is
 
-Koze-Kost is a platform for finding and listing kos. It brings three roles into one system: renters looking for a room, owners managing their properties and room availability, and admins keeping the platform tidy.
+Koze-Kost is a platform for finding and listing kos. It brings three roles into one system: renters looking for a room, owners managing their properties and room availability, and admins maintaining the platform.
 
 The public side is a listing and search experience. A renter can browse kos, look at the area on a map, read the details, and start a conversation with the owner. Owners manage listings, update availability and answer messages. Admins manage users, content and the ads that keep the platform running.
 
 ## My part
 
-The project's task breakdown records my contribution across the interface and the product presentation:
+The project's task breakdown documents my contribution across the interface and the product presentation:
 
 - The application logo.
 - The search-results and property-detail screens.
@@ -40,19 +40,19 @@ The project's task breakdown records my contribution across the interface and th
 - The profile-editing flow.
 - The project report.
 
-That work sits mostly on the front end, with the search and profile flows wired into the Laravel application rather than left as static mockups.
+Most of this work is on the front end, with the search and profile flows connected to the Laravel application rather than left as static mockups.
 
 ## How it fits together
 
 The app uses Laravel 12 as the application layer, Vue 3 with Inertia.js for the interface, Tailwind for styling, and Leaflet for the map. Spatie's permission package separates the renter, owner and admin roles.
 
-The product choice that matters most is where the transaction stops. Koze-Kost supports discovery, availability and conversation, but payment happens outside the system. That keeps the build focused on finding a room and talking to the person who manages it.
+The key product decision is where the transaction ends. Koze-Kost supports discovery, availability and conversation, but payment happens outside the system. This keeps the build focused on finding a room and speaking with the property owner.
 
 ## What I learned
 
-- A multi-role product needs each role's empty states and next actions designed, not just the main listing page.
+- A multi-role product needs each role's empty states and next actions designed, rather than only the main listing page.
 - Search is a data feature before it is a screen. The interface is only as good as the listing fields behind it.
-- A map and a chat window are different kinds of interaction, but both need a clear fallback when data or the other person is missing.
+- A map and a chat window are different interactions, but both need a clear fallback when data or the other person is unavailable.
 
 ## Status
 

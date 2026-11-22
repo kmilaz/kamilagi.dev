@@ -21,13 +21,13 @@ tools:
 cover: "../../assets/images/case-markyours-cover.png"
 coverAlt: "Screenshot of the MarkYours landing page with its logo and Start Photobooth button."
 ogImage: "../../assets/og/og-markyours.png"
-outcome: "Live at markyours.kamilagi.dev, still in progress."
+outcome: "Live at markyours.kamilagi.dev; still in development."
 draft: false
 ---
 
 ## What it is
 
-MarkYours is a self-studio app you open in the browser. There is nothing to install: the client,
+MarkYours is a self-studio app you open in the browser. It requires no installation: the client,
 the API and the stored files all live online.
 
 The project is planned with `grill-with-docs` and co-developed with AI agents. Writing the plan
@@ -48,12 +48,12 @@ platform rather than several services to wire together.
 
 ## What I learned
 
-- Planning with AI agents works when the plan is an artifact, not a conversation. The documentation
-  is the contract.
+- Planning with AI agents works when the plan is a written artifact rather than a conversation. The
+  documentation becomes the reference.
 - Drizzle makes the schema readable in TypeScript, which matters when the same models are used by
   the API and the client.
 - Object storage changes what belongs in a database: metadata in D1, blobs in R2.
 
 ## Status
 
-Live at [markyours.kamilagi.dev](https://markyours.kamilagi.dev). The app is still being built.
+Live at [markyours.kamilagi.dev](https://markyours.kamilagi.dev). The application is still in development.

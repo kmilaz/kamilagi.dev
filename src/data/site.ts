@@ -4,7 +4,7 @@ import portrait from "../assets/images/portrait.jpg";
  * PERSONAL DATA
  * ------------
  * Every personal detail lives in this file. Values below are taken from
- * work/docs/cv.pdf; the portrait is still a placeholder. Project writing
+ * the current CV; the portrait lives in src/assets/images. Project writing
  * lives in src/content/projects/*.md.
  */
 export const site = {
@@ -34,26 +34,24 @@ export const site = {
     alt: "Kamila Zahwa wearing a grey hijab and black shirt, arms crossed.",
   },
   availability: {
-    status: "Open",
+    status: "Open to opportunities",
     window: "From January 2027",
     arrangement: "East Java · on-site or hybrid",
-    capacity: "",
   },
   hero: {
-    eyebrow: "Portfolio — 2026 edition",
-    lede: "Informatics engineering student and full-stack developer. I build web apps end to end — React and Astro in front, Hono, Drizzle and Cloudflare behind.",
+    lede: "Informatics engineering student and full-stack web developer. I build web applications end to end — React and Astro on the front end, Hono, Drizzle and Cloudflare behind.",
     supporting:
-      "This site, a browser-based studio app and an MRV platform for green financing. I keep the structure simple so the next change is obvious.",
+      "My work ranges from a browser-based studio app and an MRV platform to a kos search platform and a laboratory portal. I keep the architecture simple so each build remains easy to maintain.",
   },
   about: {
     paragraphs: [
-      "I'm an informatics engineering student at Politeknik Negeri Malang, studying toward a Sarjana Terapan Teknik Informatika (2024–2028). Most of what I know comes from building: this portfolio, MarkYours, and Greenshift.",
-      "I work across the stack — React, Astro and Tailwind CSS on the frontend; Hono, Drizzle ORM and Cloudflare Workers, D1, R2 and KV on the backend. I care about keeping the structure simple enough that the next change is obvious.",
-      "Outside coursework I'm vice chairman of Workshop Riset Informatika, where I coordinate the divisions behind the miniclass program and mentor the 2026 board's event coordinators through their event cycle.",
+      "I am an informatics engineering student at Politeknik Negeri Malang, studying toward a Sarjana Terapan Teknik Informatika (2024–2028). Most of my technical knowledge comes from building: this portfolio, MarkYours, Greenshift, Koze-Kost, and the Applied Informatics laboratory portal.",
+      "I work across the stack — React, Astro and Tailwind CSS on the frontend; Hono, Drizzle ORM and Cloudflare Workers, D1, R2 and KV on the backend. I value structure that is simple enough to explain and maintain.",
+      "Outside coursework, I serve as vice chairman of Workshop Riset Informatika, where I coordinate the divisions behind the miniclass program and mentor the 2026 board's event coordinators through their event cycle.",
     ],
     honesty: {
-      title: "The honest bit",
-      body: "I'm still a student. None of these projects are commercial client work, and MarkYours is co-developed with AI agents. I'd rather show what I actually built and what I don't know yet than pad the list.",
+      title: "A note on experience",
+      body: "I am still a student. Some of this work is collaborative: MarkYours is co-developed with AI agents, Koze-Kost is a team project, and the laboratory portal was built with three other developers. I prefer to show the work I completed and be clear about the areas where I am still learning.",
     },
     facts: [
       { label: "Based in", value: "Malang City, East Java" },
@@ -62,7 +60,7 @@ export const site = {
         value: "Informatics Engineering, Politeknik Negeri Malang, 2024–2028",
       },
       { label: "GPA", value: "3.94 / 4.0" },
-      { label: "Leading", value: "Workshop Riset Informatika, vice chairman" },
+      { label: "Role", value: "Vice chairman, Workshop Riset Informatika" },
     ],
     quote: "A good screen is usually the result of a better question.",
   },
@@ -71,14 +69,14 @@ export const site = {
       id: "comfortable",
       tier: "01",
       title: "Languages",
-      note: "Languages I've written across coursework, projects and experiments.",
+      note: "Languages I have used across coursework, projects and independent work.",
       items: ["Java", "TypeScript", "JavaScript", "HTML / CSS", "PHP", "Python", "Dart"],
     },
     {
       id: "learning",
       tier: "02",
       title: "Frameworks & tools",
-      note: "What I reach for when building: frontend, backend and the glue in between.",
+      note: "Tools I use regularly for frontend, backend and integration work.",
       items: [
         "React",
         "Astro",
@@ -97,7 +95,7 @@ export const site = {
       id: "interested",
       tier: "03",
       title: "Data & platforms",
-      note: "Storage, deployment and analysis across my projects and coursework.",
+      note: "Platforms and data tools I have worked with in projects and coursework.",
       items: [
         "Cloudflare Workers",
         "Cloudflare D1",
@@ -141,8 +139,8 @@ export const site = {
     },
   ],
   contact: {
-    heading: "Let's talk.",
-    body: "I'm an informatics engineering student in Malang building full-stack web apps with React, Astro, Hono and Cloudflare. If you want to talk about a project or the work behind any of these, my inbox is open.",
-    footerNote: "Designed and built by Kamila Zahwa. Astro, hand-written CSS, no template.",
+    heading: "Get in touch.",
+    body: "I am an informatics engineering student in Malang, building full-stack web applications with React, Astro, Hono and Cloudflare. If you would like to discuss a project or the work behind it, I would be glad to hear from you.",
+    footerNote: "Designed and built by Kamila Zahwa with Astro and hand-written CSS.",
   },
 } as const;
