@@ -29,6 +29,7 @@ Every personal detail is in one file: [`src/data/site.ts`](src/data/site.ts).
 | Hero and about copy | `site.hero`, `site.about` |
 | Skills and the three groups | `site.skills` |
 | Experience and education | `site.experience`, `site.education` |
+| Achievements | `site.achievements` |
 | Contact copy | `site.contact` |
 | Portrait | `src/assets/images/portrait.jpg` (imported at the top of `site.ts`) |
 | CV download | `public/cv.pdf`; label and filename in `site.cv` |
@@ -64,6 +65,12 @@ cv: {
 
 `public/cv.pdf` is the current CV export. Replace it with a newer PDF and keep the filename, or
 update both `href` and `fileName` in `site.ts`.
+
+## Achievements
+
+The achievements section is rendered from `site.achievements`. Each entry has `period`, `title`,
+`org`, `note`, and an optional `href` for a certificate link. Add or remove entries in
+[`src/data/site.ts`](src/data/site.ts); the section follows the card order in that array.
 
 ## Projects
 

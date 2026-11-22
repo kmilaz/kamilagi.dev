@@ -242,10 +242,46 @@ const projectCount = countLabels[projects.length] ?? String(projects.length);
     </div>
   </section>
 
+  <section class="achievements section" id="achievements">
+    <div class="container">
+      <header class="achievements__head">
+        <p class="eyebrow">05 / Achievements</p>
+        <h2 class="achievements__title">Selected <em>achievements.</em></h2>
+        <p class="achievements__intro">Academic record and language certification.</p>
+      </header>
+
+      <ul class="achievement-list">
+        {
+          site.achievements.map((item) => (
+            <li class="achievement">
+              <p class="achievement__period">{item.period}</p>
+              <div class="achievement__body">
+                <h3 class="achievement__title">{item.title}</h3>
+                <p class="achievement__org">{item.org}</p>
+                <p class="achievement__note">{item.note}</p>
+                {item.href && (
+                  <a
+                    class="achievement__link"
+                    href={item.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    View certificate<span class="visually-hidden"> (opens in a new tab)</span>
+                    <span aria-hidden="true"> ↗</span>
+                  </a>
+                )}
+              </div>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
   <section class="contact on-inverse" id="contact">
     <div class="container contact__inner">
       <div class="contact__head">
-        <p class="eyebrow eyebrow--inverse">05 / Contact</p>
+        <p class="eyebrow eyebrow--inverse">06 / Contact</p>
         <h2 class="contact__title">Get in <em>touch.</em></h2>
       </div>
 
@@ -846,6 +882,82 @@ const projectCount = countLabels[projects.length] ?? String(projects.length);
     line-height: var(--leading-normal);
   }
 
+  /* Achievements ---------------------------------------------------------- */
+
+  .achievements {
+    border-top: var(--border-hair) solid var(--c-rule);
+  }
+
+  .achievements__head {
+    display: grid;
+    gap: var(--space-sm);
+    max-width: var(--measure-wide);
+    margin-bottom: var(--space-2xl);
+  }
+
+  .achievements__title {
+    font-size: var(--text-2xl);
+  }
+
+  .achievements__title em {
+    color: var(--c-blue);
+    font-style: italic;
+  }
+
+  .achievements__intro {
+    color: var(--c-ink-muted);
+    font-size: var(--text-base);
+  }
+
+  .achievement-list {
+    border-top: var(--border) solid var(--c-ink);
+  }
+
+  .achievement {
+    display: grid;
+    grid-template-columns: 10rem minmax(0, 1fr);
+    gap: var(--space-lg);
+    padding-block: var(--space-lg);
+    border-bottom: var(--border-hair) solid var(--c-rule);
+  }
+
+  .achievement__period {
+    color: var(--c-ink-muted);
+    font-size: var(--text-2xs);
+    font-weight: var(--weight-semibold);
+    letter-spacing: var(--tracking-wide);
+    line-height: var(--leading-normal);
+    text-transform: uppercase;
+  }
+
+  .achievement__title {
+    font-size: var(--text-xl);
+    letter-spacing: var(--tracking-snug);
+  }
+
+  .achievement__org {
+    margin-top: var(--space-3xs);
+    color: var(--c-blue);
+    font-size: var(--text-sm);
+    font-weight: var(--weight-medium);
+  }
+
+  .achievement__note {
+    max-width: var(--measure);
+    margin-top: var(--space-2xs);
+    color: var(--c-ink-muted);
+    font-size: var(--text-sm);
+    line-height: var(--leading-normal);
+  }
+
+  .achievement__link {
+    display: inline-flex;
+    margin-top: var(--space-xs);
+    color: var(--c-blue);
+    font-size: var(--text-sm);
+    font-weight: var(--weight-medium);
+  }
+
   /* Contact --------------------------------------------------------------- */
 
   .contact {
@@ -1013,8 +1125,14 @@ const projectCount = countLabels[projects.length] ?? String(projects.length);
 
     .about__grid,
     .about__honest,
+    .achievement,
     .track__grid {
       grid-template-columns: 1fr;
+    }
+
+    .achievement {
+      gap: var(--space-xs);
+      padding-block: var(--space-md);
     }
 
     .about__facts {

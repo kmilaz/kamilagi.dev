@@ -41,7 +41,7 @@ export const site = {
   hero: {
     lede: "Informatics engineering student and full-stack web developer. I build web applications end to end — React and Astro on the front end, Hono, Drizzle and Cloudflare behind.",
     supporting:
-      "I care about simple, maintainable architecture.",
+      "I focus on structure that stays clear as a product grows, from the interface to the data layer.",
   },
   about: {
     paragraphs: [
@@ -136,6 +136,22 @@ export const site = {
       title: "Bachelor's of Applied Science, Informatics Engineering",
       org: "Politeknik Negeri Malang",
       note: "Sarjana Terapan Teknik Informatika. Cumulative GPA 3.94/4.0.",
+    },
+  ],
+  achievements: [
+    {
+      period: "2024 — 2028",
+      title: "Cumulative GPA 3.94 / 4.0",
+      org: "Politeknik Negeri Malang",
+      note: "Bachelor's of Applied Science, Informatics Engineering.",
+      href: null,
+    },
+    {
+      period: "Certification",
+      title: "EF SET English Certificate — C1 Advanced",
+      org: "EF SET",
+      note: "A 90-minute standardized English proficiency test.",
+      href: "https://cert.efset.org/va72na",
     },
   ],
   contact: {
