@@ -211,6 +211,7 @@ const mailSubject = encodeURIComponent(`Question about “${data.title}”`);
 
   .case__meta dd {
     margin: 0;
+    overflow-wrap: anywhere;
     font-size: var(--text-sm);
     line-height: var(--leading-normal);
   }
@@ -243,6 +244,7 @@ const mailSubject = encodeURIComponent(`Question about “${data.title}”`);
 
   .case__aside {
     position: sticky;
+    min-width: 0;
     top: calc(var(--header-h) + var(--space-md));
     display: grid;
     gap: var(--space-lg);
@@ -280,6 +282,7 @@ const mailSubject = encodeURIComponent(`Question about “${data.title}”`);
 
   .case__aside-facts dd {
     margin: var(--space-3xs) 0 0;
+    overflow-wrap: anywhere;
     font-size: var(--text-sm);
     line-height: var(--leading-normal);
   }
@@ -341,13 +344,13 @@ const mailSubject = encodeURIComponent(`Question about “${data.title}”`);
 
   @media (max-width: 56rem) {
     .case__layout {
-      grid-template-columns: 1fr;
+      grid-template-columns: minmax(0, 1fr);
       gap: var(--space-xl);
     }
 
     .case__aside {
       position: static;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
       align-items: start;
       gap: var(--space-md);
     }
@@ -367,7 +370,7 @@ const mailSubject = encodeURIComponent(`Question about “${data.title}”`);
     }
 
     .case__aside {
-      grid-template-columns: 1fr;
+      grid-template-columns: minmax(0, 1fr);
     }
 
     .case__aside-facts {

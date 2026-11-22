@@ -317,6 +317,7 @@ button {
 
 .prose a {
   color: var(--c-blue);
+  overflow-wrap: anywhere;
   text-decoration-line: underline;
   text-decoration-color: color-mix(in srgb, var(--c-blue) 40%, transparent);
 }

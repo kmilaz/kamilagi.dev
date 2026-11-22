@@ -17,6 +17,8 @@ const projects = (await getCollection("projects", ({ data }) => !data.draft)).so
 );
 
 const [lead, ...rest] = projects;
+const countLabels = ["No", "One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine"];
+const projectCount = countLabels[projects.length] ?? String(projects.length);
 ---
 
 <BaseLayout
@@ -152,10 +154,10 @@ const [lead, ...rest] = projects;
     <div class="container">
       <header class="work__head">
         <p class="eyebrow">02 / Selected work</p>
-        <h2 class="work__title">Three builds, <em>taken apart.</em></h2>
+        <h2 class="work__title">{projectCount} builds, <em>taken apart.</em></h2>
         <p class="work__intro">
-          Self-directed and project-based work, not client work. Each case covers what the thing
-          does, the stack behind it, and what I learned while building it.
+          A mix of client, lab and self-directed work. Each case covers what the thing does, the
+          stack behind it, and what I learned while building it.
         </p>
       </header>
 
