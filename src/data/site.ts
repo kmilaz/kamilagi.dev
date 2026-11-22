@@ -140,17 +140,17 @@ export const site = {
   ],
   achievements: [
     {
-      period: "Apr 2026",
-      title: "Google Student Ambassador 2026",
-      org: "Google Indonesia",
-      note: "Selected as the official Politeknik Negeri Malang delegate for Google Indonesia's digital capability program, focused on digital literacy and AI adoption.",
-      href: null,
-    },
-    {
       period: "Jun 2026",
       title: "Second place, Best Presentation — PLAY IT! 2026",
       org: "Politeknik Negeri Malang · Information Technology",
       note: "National web application hackathon; second place in the Best Presentation category.",
+      href: null,
+    },
+    {
+      period: "Apr 2026",
+      title: "Google Student Ambassador 2026",
+      org: "Google Indonesia",
+      note: "Selected as the official Politeknik Negeri Malang delegate for Google Indonesia's digital capability program, focused on digital literacy and AI adoption.",
       href: null,
     },
     {
