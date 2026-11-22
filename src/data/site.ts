@@ -140,10 +140,31 @@ export const site = {
   ],
   achievements: [
     {
-      period: "2024 — 2028",
-      title: "Cumulative GPA 3.94 / 4.0",
+      period: "2026",
+      title: "Google Student Ambassador 2026",
+      org: "Google Indonesia",
+      note: "Selected as the official Politeknik Negeri Malang delegate for Google Indonesia's digital capability program, focused on digital literacy and AI adoption.",
+      href: null,
+    },
+    {
+      period: "2026",
+      title: "Second place, Best Presentation — PLAY IT! 2026",
+      org: "Politeknik Negeri Malang · Information Technology",
+      note: "National web application hackathon; second place in the Best Presentation category.",
+      href: null,
+    },
+    {
+      period: "2026",
+      title: "Second place, Speech — INTERCOMP 2026",
+      org: "Politeknik Negeri Malang · Information Technology",
+      note: "Department-level speech competition; second place.",
+      href: null,
+    },
+    {
+      period: "2026 / 2027",
+      title: "Vice chairman, Workshop Riset Informatika",
       org: "Politeknik Negeri Malang",
-      note: "Bachelor's of Applied Science, Informatics Engineering.",
+      note: "Led the 2026/2027 board, coordinated its divisions and mentored the event coordinators.",
       href: null,
     },
     {
@@ -152,6 +173,13 @@ export const site = {
       org: "EF SET",
       note: "A 90-minute standardized English proficiency test.",
       href: "https://cert.efset.org/va72na",
+    },
+    {
+      period: "2024 — 2028",
+      title: "Cumulative GPA 3.94 / 4.0",
+      org: "Politeknik Negeri Malang",
+      note: "Bachelor's of Applied Science, Informatics Engineering.",
+      href: null,
     },
   ],
   contact: {
